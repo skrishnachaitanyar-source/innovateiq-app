@@ -4,8 +4,11 @@ import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   try {
-    const { job_id, contractor_id, cover_note } = await request.json()
     const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+    const { job_id, contractor_id, cover_note } = await request.json()
 
     const { data: job } = await supabase
       .from('jobs')

@@ -246,10 +246,15 @@ CREATE POLICY "profiles_admin" ON profiles FOR ALL USING (
   EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
 );
 
--- Contractors: own record + admins
+-- Contractors: read own record; only admins can write (prevents self-approval)
 DROP POLICY IF EXISTS "contractors_own" ON contractors;
-CREATE POLICY "contractors_own" ON contractors FOR ALL USING (
+DROP POLICY IF EXISTS "contractors_read_own" ON contractors;
+DROP POLICY IF EXISTS "contractors_admin_all" ON contractors;
+CREATE POLICY "contractors_read_own" ON contractors FOR SELECT USING (
   profile_id = auth.uid() OR
+  EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
+);
+CREATE POLICY "contractors_admin_all" ON contractors FOR ALL USING (
   EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
 );
 
@@ -346,7 +351,7 @@ BEGIN
     NEW.id,
     NEW.email,
     COALESCE(NEW.raw_user_meta_data->>'full_name', ''),
-    COALESCE(NEW.raw_user_meta_data->>'role', 'contractor')
+    'contractor'  -- never trust client-supplied role; admins are promoted manually
   );
   RETURN NEW;
 END;

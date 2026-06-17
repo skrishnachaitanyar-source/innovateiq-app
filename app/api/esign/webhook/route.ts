@@ -1,10 +1,16 @@
 import { createAdminClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 
-// DocuSeal sends webhooks when documents are signed
-// Configure webhook URL in DocuSeal: https://yourdomain.com/api/esign/webhook
+// Configure DOCUSEAL_WEBHOOK_SECRET in your DocuSeal dashboard and Vercel env vars
 export async function POST(request: Request) {
   try {
+    // Verify webhook secret to prevent forged requests
+    const secret = request.headers.get('x-docuseal-signature') ?? request.headers.get('authorization')
+    const expectedSecret = process.env.DOCUSEAL_WEBHOOK_SECRET
+    if (expectedSecret && secret !== expectedSecret) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
     const payload = await request.json()
     const { event_type, data } = payload
 
@@ -17,7 +23,6 @@ export async function POST(request: Request) {
 
     const supabase = await createAdminClient()
 
-    // Find the esign request
     const { data: esignReq } = await supabase
       .from('esign_requests')
       .select('*')
@@ -26,17 +31,14 @@ export async function POST(request: Request) {
 
     if (!esignReq) return NextResponse.json({ error: 'Request not found' }, { status: 404 })
 
-    // Get signed document URL from webhook payload
     const signedUrl = data?.documents?.[0]?.url || null
 
-    // Update esign request
     await supabase.from('esign_requests').update({
       status: 'signed',
       signed_at: new Date().toISOString(),
       signed_document_url: signedUrl,
     }).eq('id', esignReq.id)
 
-    // Save signed document to documents table
     if (signedUrl) {
       await supabase.from('documents').insert([{
         contractor_id: esignReq.contractor_id,
@@ -49,7 +51,6 @@ export async function POST(request: Request) {
       }])
     }
 
-    // Notify admin
     const { data: admins } = await supabase
       .from('profiles').select('id').eq('role', 'admin')
 
@@ -65,7 +66,6 @@ export async function POST(request: Request) {
       )
     }
 
-    // Notify the signer
     if (esignReq.contractor_id) {
       const { data: c } = await supabase
         .from('contractors').select('profile_id').eq('id', esignReq.contractor_id).single()

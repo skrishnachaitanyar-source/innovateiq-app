@@ -32,7 +32,7 @@ export default function PostJobPage() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
 
-    const { data: client } = await supabase.from('clients').select('id').eq('profile_id', user.id).single()
+    let { data: client } = await supabase.from('clients').select('id').eq('profile_id', user.id).single()
     if (!client) {
       // Create client record if doesn't exist
       const { data: profile } = await supabase.from('profiles').select('full_name').eq('id', user.id).single()
@@ -40,9 +40,10 @@ export default function PostJobPage() {
         profile_id: user.id, company_name: profile?.full_name || 'My Company'
       }]).select('id').single()
       if (!newClient) { setError('Please complete your profile first.'); setSaving(false); return }
+      client = newClient
     }
 
-    const clientId = client?.id
+    const clientId = client.id
     const { error: jobError } = await supabase.from('jobs').insert([{
       ...form,
       client_id: clientId,

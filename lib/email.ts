@@ -27,13 +27,14 @@ function emailHtml(title: string, body: string) {
 
 const p = (t: string) => `<p style="color:#475569;font-size:15px;line-height:1.7;margin:0 0 12px">${t}</p>`
 const btn = (t: string, url: string) => `<a href="${url}" style="display:inline-block;background:#1B6FE8;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:14px;margin:16px 0">${t}</a>`
+const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
 export async function sendContactEmail(data: { name: string; email: string; subject?: string; message: string; type: string }) {
   return getResend().emails.send({
     from: FROM, to: ADMIN_EMAIL,
-    subject: `[${data.type.toUpperCase()}] ${data.subject || 'New Contact Submission'}`,
+    subject: `[${esc(data.type.toUpperCase())}] ${esc(data.subject || 'New Contact Submission')}`,
     html: emailHtml('New Contact Submission',
-      `${p(`<strong>From:</strong> ${data.name} (${data.email})`)}${p(`<strong>Type:</strong> ${data.type}`)}${data.subject ? p(`<strong>Subject:</strong> ${data.subject}`) : ''}${p(`<strong>Message:</strong><br>${data.message.replace(/\n/g, '<br>')}`)}`
+      `${p(`<strong>From:</strong> ${esc(data.name)} (${esc(data.email)})`)}${p(`<strong>Type:</strong> ${esc(data.type)}`)}${data.subject ? p(`<strong>Subject:</strong> ${esc(data.subject)}`) : ''}${p(`<strong>Message:</strong><br>${esc(data.message).replace(/\n/g, '<br>')}`)}`
     )
   })
 }
