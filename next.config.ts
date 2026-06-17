@@ -1,12 +1,6 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      // Serve marketing site at root
-      { source: '/', destination: '/index-marketing.html' },
-    ]
-  },
   async headers() {
     return [
       {
