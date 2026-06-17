@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<!--
+=============================================================
+  INNOVATE IQ CONSULTING LLC — WEBSITE MAINTENANCE GUIDE
+=============================================================
+  CURRENT STATUS: Limited Liability Company (LLC)
+  FUTURE: S-Corp election or full S-Corp conversion
+
+  WHEN YOU CONVERT TO S-CORP, UPDATE THESE SPOTS:
+  Search → Replace
+
+  2. "Limited Liability Company (LLC)" → "S-Corporation"
+  3. "LLC · Est. 2024" → "S-Corp · Est. 2024"
+  4. Legal section card: update tax treatment card text
+     (remove Schedule C / self-employment tax language,
+      add: payroll, reasonable salary, shareholder distributions)
+  5. Footer copyright line: remove ""
+
+  7. Page <title> tag: stays as LLC unless you rename the entity
+
+  NOTE: If you formally rename the entity (not just elect S-Corp
+  tax treatment), you must update ALL instances of
+  "Innovate IQ Consulting LLC" to the new legal name.
+  Run a Find in your text editor to catch them all.
+=============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="Innovate IQ LLC — Contract staffing and placement solutions. Connecting skilled professionals with contract opportunities via 1099, W-2, or Corp-to-Corp (C2C) engagements." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Innovate IQ LLC | Contract Staffing &amp; Placement Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0B1F3A;
+    --navy-mid: #152D52;
+    --electric: #1B6FE8;
+    --electric-light: #EBF2FD;
+    --gold: #C9952A;
+    --gold-light: #FDF4E3;
+    --slate: #475569;
+    --slate-light: #F4F6F9;
+    --white: #FFFFFF;
+    --border: #DDE3EB;
+    --text-main: #0B1F3A;
+    --text-muted: #64748B;
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text-main); background: #fff; line-height: 1.7; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 68px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--electric);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; color: #fff; font-style: italic;
+  }
+  .nav-logo-text {
+    font-weight: 600; font-size: 15px; color: #fff;
+    line-height: 1.2;
+  }
+  .nav-logo-sub { font-weight: 300; font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.75); font-size: 14px; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta {
+    background: var(--electric); color: #fff !important;
+    padding: 8px 18px; border-radius: var(--radius);
+    font-size: 14px !important; font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: #1557C4 !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 90px 5% 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(27,111,232,0.2); color: #7EB8FF;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 20px;
+    border: 1px solid rgba(27,111,232,0.3);
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    color: #fff; line-height: 1.2; margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: #7EB8FF; }
+  .hero p { color: rgba(255,255,255,0.65); font-size: 17px; max-width: 480px; margin-bottom: 36px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--electric); color: #fff;
+    padding: 13px 26px; border-radius: var(--radius);
+    font-size: 15px; font-weight: 500;
+    border: none; cursor: pointer; transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #1557C4; }
+  .btn-outline {
+    background: transparent; color: rgba(255,255,255,0.85);
+    padding: 13px 26px; border-radius: var(--radius);
+    font-size: 15px; font-weight: 400;
+    border: 1px solid rgba(255,255,255,0.25); cursor: pointer; transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+
+  .hero-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+  }
+  .hero-card h3 { color: #fff; font-size: 15px; font-weight: 500; margin-bottom: 20px; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.08em; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-item { background: rgba(255,255,255,0.07); border-radius: var(--radius); padding: 18px; }
+  .stat-num { font-size: 32px; font-weight: 700; color: #fff; line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+  .stat-accent { color: #7EB8FF; }
+
+  /* LEGAL NOTICE BANNER */
+  .legal-banner {
+    background: var(--gold-light);
+    border-bottom: 1px solid #E8C56A;
+    padding: 12px 5%;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .legal-banner-icon { font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+  .legal-banner p { font-size: 13px; color: #7A5A10; line-height: 1.6; }
+  .legal-banner strong { color: #5A3E05; }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; scroll-margin-top: 76px; }
+  .section-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--electric); margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px); color: var(--navy); line-height: 1.2; margin-bottom: 14px;
+  }
+  .section-sub { font-size: 16px; color: var(--text-muted); max-width: 580px; margin-bottom: 48px; }
+
+  /* SERVICES */
+  #services { background: var(--slate-light); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .service-card {
+    background: #fff; border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    padding: 28px; transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .service-card:hover { box-shadow: 0 8px 28px rgba(11,31,58,0.08); transform: translateY(-2px); }
+  .service-icon {
+    width: 48px; height: 48px; border-radius: 10px;
+    background: var(--electric-light); color: var(--electric);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 16px;
+  }
+  .service-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; color: var(--navy); }
+  .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+  /* HOW IT WORKS */
+  #how-it-works { background: #fff; }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; position: relative; }
+  .step {
+    padding: 32px 24px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .step:last-child { border-right: none; }
+  .step-num {
+    font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--electric-light);
+    line-height: 1; margin-bottom: 12px;
+  }
+  .step h3 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .step p { font-size: 14px; color: var(--text-muted); }
+
+  /* SENIORITY TIERS */
+  #tiers { background: var(--navy); }
+  #tiers .section-title { color: #fff; }
+  #tiers .section-sub { color: rgba(255,255,255,0.55); }
+  #tiers .section-label { color: #7EB8FF; }
+  .tiers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .tier-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-lg); padding: 28px;
+    transition: background 0.2s;
+  }
+  .tier-card:hover { background: rgba(255,255,255,0.05); }
+  .tier-badge {
+    display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .badge-junior { background: rgba(16,185,129,0.2); color: #34D399; }
+  .badge-mid { background: rgba(27,111,232,0.2); color: #7EB8FF; }
+  .badge-senior { background: rgba(201,149,42,0.2); color: #FCD34D; }
+  .badge-lead { background: rgba(167,139,250,0.2); color: #C4B5FD; }
+  .tier-card h3 { color: #fff; font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .tier-card p { color: rgba(255,255,255,0.5); font-size: 13px; line-height: 1.65; margin-bottom: 16px; }
+  .tier-cta { display: inline-block; margin-top: 16px; font-size: 13px; font-weight: 500; color: #7EB8FF; border: 1px solid rgba(126,184,255,0.3); padding: 7px 16px; border-radius: 20px; transition: all 0.2s; }
+  .tier-cta:hover { background: rgba(126,184,255,0.1); border-color: #7EB8FF; }
+
+  /* TALENT / EMPLOYER SPLIT */
+  .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .split-card {
+    border-radius: var(--radius-lg); padding: 36px;
+    border: 1px solid var(--border);
+  }
+  .split-card.talent { background: var(--electric-light); border-color: #BDD5FA; }
+  .split-card.employer { background: var(--navy); }
+  .split-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+  .split-card.talent h3 { color: var(--navy); }
+  .split-card.employer h3 { color: #fff; }
+  .split-card p { font-size: 14px; margin-bottom: 20px; }
+  .split-card.talent p { color: var(--text-muted); }
+  .split-card.employer p { color: rgba(255,255,255,0.55); }
+  .split-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .split-list li { font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
+  .split-card.talent .split-list li { color: var(--navy); }
+  .split-card.employer .split-list li { color: rgba(255,255,255,0.75); }
+  .check { width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; margin-top: 1px; }
+  .split-card.talent .check { background: var(--electric); color: #fff; }
+  .split-card.employer .check { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); }
+  .btn-dark { background: var(--navy); color: #fff; padding: 12px 22px; border-radius: var(--radius); font-size: 14px; font-weight: 500; display: inline-block; }
+  .btn-white { background: #fff; color: var(--navy); padding: 12px 22px; border-radius: var(--radius); font-size: 14px; font-weight: 500; display: inline-block; }
+
+  /* LEGAL COMPLIANCE */
+  #legal { background: #FFFDF7; border-top: 1px solid #E8C56A; border-bottom: 1px solid #E8C56A; }
+  .legal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .legal-card {
+    background: #fff; border-radius: var(--radius-lg); padding: 24px;
+    border: 1px solid #E8D88A;
+  }
+  .legal-card-icon { font-size: 24px; margin-bottom: 12px; }
+  .legal-card h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .legal-card p { font-size: 13px; color: #7A5A10; line-height: 1.65; }
+
+  /* APPLY / POST JOB TABS */
+  #apply { background: var(--slate-light); }
+  .tabs { display: flex; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; width: fit-content; margin-bottom: 36px; }
+  .tab { padding: 10px 24px; font-size: 14px; font-weight: 500; cursor: pointer; background: #fff; color: var(--text-muted); border: none; transition: all 0.2s; }
+  .tab.active { background: var(--electric); color: #fff; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 13px; font-weight: 500; color: var(--navy); }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 10px 14px; border-radius: var(--radius); border: 1px solid var(--border);
+    font-size: 14px; font-family: 'Inter', sans-serif; color: var(--text-main);
+    background: #fff; outline: none; transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--electric); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    background: var(--electric); color: #fff; padding: 12px 28px;
+    border-radius: var(--radius); font-size: 15px; font-weight: 500;
+    border: none; cursor: pointer; margin-top: 8px; transition: background 0.2s;
+  }
+  .form-submit:hover { background: #1557C4; }
+  .form-panel { display: none; }
+  .form-panel.active { display: block; }
+
+  /* CONTACT */
+  #contact { background: var(--navy); }
+  #contact .section-title { color: #fff; }
+  #contact .section-label { color: #7EB8FF; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start; }
+  .contact-info p { color: rgba(255,255,255,0.55); font-size: 15px; margin-bottom: 24px; }
+  .contact-detail { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 16px; }
+  .contact-detail-icon {
+    width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+  }
+  .contact-detail-text p:first-child { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.07em; }
+  .contact-detail-text p:last-child { font-size: 14px; color: #fff; }
+  .contact-form-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 32px; }
+  .contact-form-card .form-group input,
+  .contact-form-card .form-group select,
+  .contact-form-card .form-group textarea {
+    background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); color: #fff;
+  }
+  .contact-form-card .form-group label { color: rgba(255,255,255,0.7); }
+  .contact-form-card .form-group input::placeholder,
+  .contact-form-card .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+  /* FOOTER */
+  footer {
+    background: #060F1E; padding: 48px 5% 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 20px; }
+  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 8px; max-width: 320px; line-height: 1.6; }
+  .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-nav a { font-size: 13px; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+  .footer-nav a:hover { color: rgba(255,255,255,0.85); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .footer-disclaimer { font-size: 11px; color: rgba(255,255,255,0.2); max-width: 600px; line-height: 1.6; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .split-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .step { border-right: none; border-bottom: 1px solid var(--border); }
+    .step:last-child { border-bottom: none; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .form-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    section { padding: 56px 5%; }
+  }
+
+  /* Toast notification */
+  .toast {
+    position: fixed; bottom: 28px; right: 28px;
+    background: var(--navy); color: #fff;
+    padding: 14px 22px; border-radius: var(--radius);
+    font-size: 14px; font-weight: 500;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    transform: translateY(80px); opacity: 0;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 200;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* Hamburger menu */
+  .mobile-nav {
+    display: none; flex-direction: column;
+    position: fixed; top: 68px; left: 0; right: 0;
+    background: var(--navy);
+    padding: 16px 5%; gap: 0; z-index: 99;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { color: rgba(255,255,255,0.75); font-size: 15px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .mobile-nav a:last-child { border-bottom: none; }
+
+  /* DOCUMENTS & VENDOR PORTAL */
+  #documents { background: #fff; }
+  .doc-category { margin-bottom: 36px; }
+  .doc-category-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--electric); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .doc-list { display: flex; flex-direction: column; gap: 10px; }
+  .doc-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border: 1px solid var(--border); border-radius: var(--radius); background: #fff; transition: border-color 0.2s, box-shadow 0.2s; }
+  .doc-item:hover { border-color: var(--electric); box-shadow: 0 2px 12px rgba(27,111,232,0.08); }
+  .doc-icon { font-size: 22px; flex-shrink: 0; }
+  .doc-info { flex: 1; }
+  .doc-name { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .doc-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .doc-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; }
+  .badge-required { background: #FEE2E2; color: #991B1B; }
+  .badge-conditional { background: #FEF3C7; color: #92400E; }
+  .badge-recommended { background: #D1FAE5; color: #065F46; }
+  .doc-action { font-size: 12px; font-weight: 500; color: var(--electric); border: 1px solid var(--electric); padding: 5px 12px; border-radius: 6px; cursor: pointer; background: none; transition: all 0.2s; flex-shrink: 0; }
+  .doc-action:hover { background: var(--electric); color: #fff; }
+
+  /* VENDOR PORTAL */
+  #vendor { background: var(--slate-light); }
+  .vendor-layout { display: grid; grid-template-columns: 260px 1fr; gap: 28px; align-items: start; }
+  .vendor-sidebar { display: flex; flex-direction: column; gap: 8px; }
+  .vendor-tab { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: var(--radius); border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 14px; font-weight: 500; color: var(--text-muted); transition: all 0.2s; text-align: left; }
+  .vendor-tab:hover { border-color: var(--electric); color: var(--navy); }
+  .vendor-tab.active { background: var(--electric); border-color: var(--electric); color: #fff; }
+  .vendor-tab-icon { font-size: 18px; flex-shrink: 0; }
+  .vendor-panel { display: none; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; }
+  .vendor-panel.active { display: block; }
+  .vendor-panel h3 { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .vendor-panel .panel-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+  .msg-thread { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; max-height: 280px; overflow-y: auto; padding-right: 4px; }
+  .msg-bubble { max-width: 80%; padding: 12px 16px; border-radius: 12px; font-size: 13px; line-height: 1.6; }
+  .msg-bubble.sent { align-self: flex-end; background: var(--electric); color: #fff; border-radius: 12px 12px 2px 12px; }
+  .msg-bubble.recv { align-self: flex-start; background: var(--slate-light); color: var(--navy); border-radius: 12px 12px 12px 2px; border: 1px solid var(--border); }
+  .msg-meta { font-size: 11px; opacity: 0.6; margin-top: 4px; }
+  .msg-compose { display: flex; gap: 10px; align-items: flex-end; }
+  .msg-compose textarea { flex: 1; padding: 10px 14px; border-radius: var(--radius); border: 1px solid var(--border); font-size: 14px; font-family: 'Inter', sans-serif; resize: none; height: 72px; outline: none; transition: border-color 0.2s; }
+  .msg-compose textarea:focus { border-color: var(--electric); }
+  .msg-send { background: var(--electric); color: #fff; border: none; padding: 10px 18px; border-radius: var(--radius); font-size: 14px; font-weight: 500; cursor: pointer; height: 72px; transition: background 0.2s; }
+  .msg-send:hover { background: #1557C4; }
+  .engagement-list { display: flex; flex-direction: column; gap: 12px; }
+  .engagement-item { padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius); display: flex; align-items: center; gap: 14px; }
+  .eng-status { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .eng-active { background: #10B981; }
+  .eng-pending { background: #F59E0B; }
+  .eng-closed { background: #94A3B8; }
+  .eng-info { flex: 1; }
+  .eng-name { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .eng-detail { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .eng-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  .eng-badge.active { background: #D1FAE5; color: #065F46; }
+  .eng-badge.pending { background: #FEF3C7; color: #92400E; }
+  .eng-badge.closed { background: #F1F5F9; color: #64748B; }
+  .vault-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .vault-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: border-color 0.2s; }
+  .vault-item:hover { border-color: var(--electric); }
+  .vault-icon { font-size: 24px; flex-shrink: 0; }
+  .vault-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .vault-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .upload-zone { border: 2px dashed var(--border); border-radius: var(--radius-lg); padding: 32px; text-align: center; cursor: pointer; transition: border-color 0.2s; margin-top: 16px; }
+  .upload-zone:hover { border-color: var(--electric); }
+  .upload-zone p { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+  .upload-zone .upload-icon { font-size: 32px; }
+  .checklist { display: flex; flex-direction: column; gap: 10px; }
+  .check-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; transition: background 0.15s; }
+  .check-item:hover { background: var(--slate-light); }
+  .check-item input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--electric); flex-shrink: 0; cursor: pointer; }
+  .check-item label { font-size: 14px; color: var(--navy); cursor: pointer; flex: 1; }
+  .check-item .check-note { font-size: 11px; color: var(--text-muted); }
+  @media (max-width: 900px) { .vendor-layout { grid-template-columns: 1fr; } .vault-grid { grid-template-columns: 1fr; } }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">IQ</div>
+    <div>
+      <div class="nav-logo-text">Innovate IQ LLC</div>
+      <div class="nav-logo-sub">LLC · Est. 2024</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#legal">Compliance</a>
+    <a href="#apply">Apply / Post</a>
+    <a href="#vendor">Vendor Portal</a>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#legal" onclick="toggleMenu()">Compliance</a>
+  <a href="#apply" onclick="toggleMenu()">Apply / Post a Job</a>
+  <a href="#vendor" onclick="toggleMenu()">Vendor Portal</a>
+  <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+</div>
+
+<!-- LEGAL NOTICE BANNER -->
+<div class="legal-banner">
+  <div class="legal-banner-icon">⚖️</div>
+  <p>
+    <strong>Important Legal Notice:</strong> Innovate IQ LLC is a Limited Liability Company providing contract staffing and B2B consulting services. All placements are lawful under applicable federal and state labor laws. Independent contractors are engaged on a 1099 basis or via Corp-to-Corp (C2C) arrangements — not as W-2 employees of client companies — unless explicitly specified. All engagements are governed by a Master Services Agreement (MSA). This is not a legal advisory service. Consult a licensed attorney for specific legal guidance.
+  </p>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <div class="hero-eyebrow">Contract Staffing &amp; Placement Solutions</div>
+    <h1>Your Career.<br/><em>Your Contracts.</em><br/>Your Terms.</h1>
+    <p>Innovate IQ LLC connects skilled professionals with top-tier contract opportunities — and helps businesses find the right talent, fast.</p>
+    <div class="hero-ctas">
+      <a href="#apply" class="btn-primary">Find Contract Work</a>
+      <a href="#apply" class="btn-outline">Post a Role</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <h3>Platform at a Glance</h3>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-num"><span class="stat-accent">4</span></div>
+        <div class="stat-label">Seniority Tiers Supported</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="stat-accent">W2</span> <span style="font-size:14px;color:rgba(255,255,255,0.4)">/</span> <span class="stat-accent" style="font-size:24px">1099</span></div>
+        <div class="stat-label">Engagement Types</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="font-size:20px; padding-top:4px"><span class="stat-accent">C2C</span></div>
+        <div class="stat-label">Corp-to-Corp Accepted</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="stat-accent">LLC</span></div>
+        <div class="stat-label">Legally Registered Entity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <div class="section-title">Contract Staffing Services</div>
+  <div class="section-sub">Whether you're a professional seeking your next contract role or a company building a team, we have the structure to support both sides of the engagement.</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>Contract Job Placement</h3>
+      <p>We source and match qualified professionals to contract roles across industries — IT, engineering, finance, healthcare, and more. Engagements can be short-term or extended.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Employer Staffing Solutions</h3>
+      <p>Businesses can post contract roles and access a pre-vetted pool of talent ranked by seniority. We handle the sourcing and initial screening — you make the hire.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Compliance & Onboarding Support</h3>
+      <p>We guide contractors and clients through compliant onboarding — including W-9 collection, MSA execution, and correct classification under IRS guidelines.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <h3>Career Growth Consulting</h3>
+      <p>We advise contractors on rate negotiation, portfolio building, and transitioning from full-time employment to contract-based work — based on your seniority level.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤝</div>
+      <h3>Corp-to-Corp (C2C) Support</h3>
+      <p>If you have your own business entity, Innovate IQ LLC can engage your company directly under a Corp-to-Corp model — a fully legal and widely-used staffing structure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-label">Process</div>
+  <div class="section-title">How It Works</div>
+  <div class="section-sub">A straightforward path from profile to placement, designed to respect your time and protect your interests at every stage.</div>
+  <div class="steps-grid" style="border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Create Your Profile</h3>
+      <p>Submit your resume, skills, and preferred engagement type (W-2, 1099, or C2C). Select your seniority tier.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Get Matched</h3>
+      <p>We review your profile and surface relevant contract roles or clients actively hiring at your level.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Review & Accept Terms</h3>
+      <p>We share role details, rate, duration, and any applicable MSA. No surprises — you approve everything before proceeding.</p>
+    </div>
+    <div class="step" style="border-right: none;">
+      <div class="step-num">04</div>
+      <h3>Start Working</h3>
+      <p>Compliant onboarding completed, you begin your engagement. We remain your point of contact throughout the contract.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SENIORITY TIERS -->
+<section id="tiers">
+  <div class="section-label">Talent Tiers</div>
+  <div class="section-title">Find the Right Fit by Seniority</div>
+  <div class="section-sub" style="color:rgba(255,255,255,0.5)">Rates below are illustrative market benchmarks (tech/IT sector). Actual rates vary by industry, location, and client. Tiers shown as relative indicators. Actual rates vary by role, industry, and location — contact us for current market ranges.</div>
+  <div class="tiers-grid">
+    <div class="tier-card">
+      <div class="tier-badge badge-junior">Junior</div>
+      <h3>Entry Level</h3>
+      <p>0–2 years of experience. Ideal for new grads or career-changers entering the contract market for the first time.</p>
+      <a href="#contact" class="tier-cta">Contact for Rates →</a>
+    </div>
+    <div class="tier-card">
+      <div class="tier-badge badge-mid">Mid-Level</div>
+      <h3>Professional</h3>
+      <p>2–5 years. Independent contributors who can own a module or workstream with limited oversight.</p>
+      <a href="#contact" class="tier-cta">Contact for Rates →</a>
+    </div>
+    <div class="tier-card">
+      <div class="tier-badge badge-senior">Senior</div>
+      <h3>Senior Professional</h3>
+      <p>5–10 years. Deep domain expertise. Can mentor others and drive technical decisions end-to-end.</p>
+      <a href="#contact" class="tier-cta">Contact for Rates →</a>
+    </div>
+    <div class="tier-card">
+      <div class="tier-badge badge-lead">Principal / Lead</div>
+      <h3>Staff / Principal</h3>
+      <p>10+ years. Cross-functional leaders, architects, and specialists sought for high-impact or complex engagements.</p>
+      <a href="#contact" class="tier-cta">Contact for Rates →</a>
+    </div>
+  </div>
+  <p style="margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.3);">* All rates are negotiated directly based on role, industry, and engagement type. Contact us to discuss your specific needs.</p>
+</section>
+
+<!-- TALENT / EMPLOYER SPLIT -->
+<section id="talent" style="background: #fff;">
+  <div class="section-label">Who We Serve</div>
+  <div class="section-title">Built for Both Sides</div>
+  <div class="section-sub">Whether you're growing your income as a contractor or growing your team as a company, Innovate IQ LLC operates as a neutral, compliant intermediary.</div>
+  <div class="split-grid">
+    <div class="split-card talent">
+      <h3>For Contract Professionals</h3>
+      <p>Expand your career on your own terms. We handle sourcing and client relationships so you can focus on the work.</p>
+      <ul class="split-list">
+        <li><div class="check">✓</div><span>Work as 1099 independent contractor, W-2, or via your own LLC (C2C)</span></li>
+        <li><div class="check">✓</div><span>Negotiate your rate — we never cap what you can earn</span></li>
+        <li><div class="check">✓</div><span>Access roles across industries and seniority levels</span></li>
+        <li><div class="check">✓</div><span>Transparent MSA — you see every term before signing</span></li>
+        <li><div class="check">✓</div><span>Support transitioning from full-time employment to contract work</span></li>
+      </ul>
+      <a href="#apply" class="btn-dark">Submit Your Profile</a>
+    </div>
+    <div class="split-card employer">
+      <h3>For Businesses &amp; Clients</h3>
+      <p>Access a structured talent pool organized by skill and seniority. Fill contract gaps without the overhead of full-time hiring.</p>
+      <ul class="split-list">
+        <li><div class="check">✓</div><span>Post contract roles — short-term, project-based, or extended</span></li>
+        <li><div class="check">✓</div><span>Candidates ranked by seniority — no guesswork</span></li>
+        <li><div class="check">✓</div><span>B2B engagement via MSA — clean contractual relationship</span></li>
+        <li><div class="check">✓</div><span>Corp-to-Corp billing available for vendor-friendly procurement</span></li>
+        <li><div class="check">✓</div><span>Compliant sourcing — worker classification handled</span></li>
+      </ul>
+      <a href="#apply" class="btn-white">Post a Contract Role</a>
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL COMPLIANCE SECTION -->
+<section id="legal">
+  <div class="section-label">Legal &amp; Compliance</div>
+  <div class="section-title">Operating Within the Law</div>
+  <div class="section-sub">Innovate IQ LLC is structured to lawfully facilitate staffing and contract placements. Here's how our operations stay compliant.</div>
+  <div class="legal-grid">
+    <div class="legal-card">
+      <div class="legal-card-icon">🏛️</div>
+      <h4>LLC Legal Structure</h4>
+      <p>Operating as a Limited Liability Company gives Innovate IQ LLC the legal standing to enter into business contracts, engage clients, and pay contractors — all as a separate legal entity from its owner(s).</p>
+    </div>
+    <div class="legal-card">
+      <div class="legal-card-icon">📄</div>
+      <h4>Master Services Agreement (MSA)</h4>
+      <p>Every engagement is governed by a written MSA or Independent Contractor Agreement (ICA). These define scope, deliverables, payment terms, and IP ownership — protecting both parties.</p>
+    </div>
+    <div class="legal-card">
+      <div class="legal-card-icon">🧾</div>
+      <h4>1099-NEC Reporting</h4>
+      <p>Contractors paid $600 or more in a calendar year will receive a Form 1099-NEC as required by the IRS. Contractors are responsible for their own self-employment taxes under federal and state law.</p>
+    </div>
+    <div class="legal-card">
+      <div class="legal-card-icon">⚠️</div>
+      <h4>Worker Classification (IRS ABC Test)</h4>
+      <p>Innovate IQ follows IRS guidelines to avoid worker misclassification. Contractors must demonstrate independent business operations. We do not guarantee W-2 status where 1099 applies.</p>
+    </div>
+    <div class="legal-card">
+      <div class="legal-card-icon">🏢</div>
+      <h4>Corp-to-Corp (C2C) Legality</h4>
+      <p>C2C arrangements are 100% legal. If you have your own business entity (LLC, S-Corp, etc.), you can invoice Innovate IQ LLC directly under a B2B services agreement.</p>
+    </div>
+    <div class="legal-card">
+      <div class="legal-card-icon">📊</div>
+      <h4>Tax Treatment</h4>
+      <p>Innovate IQ LLC is taxed as a pass-through entity by default — income and expenses flow to the owner's personal tax return. A CPA can advise on electing S-Corp tax treatment as the business grows.</p>
+    </div>
+    <div class="legal-card">
+      <div class="legal-card-icon">🔒</div>
+      <h4>Data Privacy</h4>
+      <p>Personal data submitted (resume, contact info, SSN for tax purposes) is handled securely and used only for placement and tax reporting purposes. We do not sell your information to third parties.</p>
+    </div>
+  </div>
+  <div style="margin-top: 28px; padding: 20px 24px; background: #fff; border: 1px solid #E8C56A; border-radius: var(--radius-lg);">
+    <p style="font-size: 13px; color: #7A5A10; line-height: 1.8;">
+      <strong>Disclaimer:</strong> The information on this website is provided for general informational purposes only and does not constitute legal or tax advice. Laws governing independent contractors, LLC operations, and worker classification vary by state and may change. Innovate IQ Consulting LLC strongly recommends consulting a licensed employment attorney and a CPA before entering into any contractor or staffing arrangement. Nothing on this site creates an attorney-client relationship.
+    </p>
+  </div>
+</section>
+
+<!-- APPLY / POST JOB -->
+<section id="apply">
+  <div class="section-label">Get Started</div>
+  <div class="section-title">Apply for Work or Post a Role</div>
+  <div class="section-sub">Fill out the appropriate form below. We review all submissions within 1–2 business days.</div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('talent-form', this)">I'm Looking for Work</button>
+    <button class="tab" onclick="switchTab('employer-form', this)">I'm Hiring / Posting a Role</button>
+  </div>
+
+  <div id="talent-form" class="form-panel active" style="background:#fff; border:1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; max-width: 720px;">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>First Name *</label>
+        <input type="text" name="first_name" placeholder="Jane" />
+      </div>
+      <div class="form-group">
+        <label>Last Name *</label>
+        <input type="text" name="last_name" placeholder="Smith" />
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" name="email" placeholder="jane@example.com" />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="(555) 000-0000" />
+      </div>
+      <div class="form-group">
+        <label>LinkedIn Profile URL</label>
+        <input type="url" name="linkedin" placeholder="https://linkedin.com/in/..." />
+      </div>
+      <div class="form-group">
+        <label>Primary Skill / Role *</label>
+        <input type="text" name="primary_role" placeholder="e.g. Senior Software Engineer, Data Analyst" />
+      </div>
+      <div class="form-group">
+        <label>Years of Experience *</label>
+        <select>
+          <option value="">Select...</option>
+          <option>Less than 1 year</option>
+          <option>1–2 years (Junior)</option>
+          <option>2–5 years (Mid-Level)</option>
+          <option>5–10 years (Senior)</option>
+          <option>10+ years (Principal / Lead)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preferred Engagement Type *</label>
+        <select>
+          <option value="">Select...</option>
+          <option>W-2 (through agency as employer)</option>
+          <option>1099 (independent contractor)</option>
+          <option>Corp-to-Corp (C2C) — I have my own LLC/S-Corp</option>
+          <option>Open to any</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Target Hourly Rate ($)</label>
+        <input type="text" name="target_rate" placeholder="e.g. 85" />
+      </div>
+      <div class="form-group">
+        <label>Availability</label>
+        <select>
+          <option value="">Select...</option>
+          <option>Immediately</option>
+          <option>Within 2 weeks</option>
+          <option>1 month</option>
+          <option>Just exploring</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Brief Bio / Summary *</label>
+        <textarea name="bio" placeholder="Tell us about your background, key skills, and the types of projects you're looking for..."></textarea>
+      </div>
+    </div>
+    <button class="form-submit" aria-label="Submit contractor profile" onclick="submitForm('Thank you! Your profile has been submitted. Our team will be in touch within 1–2 business days.')">Submit My Profile</button>
+  </div>
+
+  <div id="employer-form" class="form-panel" style="background:#fff; border:1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; max-width: 720px;">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Company Name *</label>
+        <input type="text" name="company_name" placeholder="Acme Corp" />
+      </div>
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" name="contact_name" placeholder="Your full name" />
+      </div>
+      <div class="form-group">
+        <label>Work Email *</label>
+        <input type="email" name="work_email" placeholder="hr@company.com" />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="employer_phone" placeholder="(555) 000-0000" />
+      </div>
+      <div class="form-group">
+        <label>Role Title *</label>
+        <input type="text" name="role_title" placeholder="e.g. DevOps Engineer, Project Manager" />
+      </div>
+      <div class="form-group">
+        <label>Seniority Level Required *</label>
+        <select>
+          <option value="">Select...</option>
+          <option>Junior (Entry Level)</option>
+          <option>Mid-Level</option>
+          <option>Senior</option>
+          <option>Principal / Lead</option>
+          <option>Open / Flexible</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Engagement Type *</label>
+        <select>
+          <option value="">Select...</option>
+          <option>1099 Independent Contractor</option>
+          <option>W-2 via Staffing Agency</option>
+          <option>Corp-to-Corp (C2C)</option>
+          <option>Flexible / Open to Discussion</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Contract Duration</label>
+        <select>
+          <option value="">Select...</option>
+          <option>Under 1 month</option>
+          <option>1–3 months</option>
+          <option>3–6 months</option>
+          <option>6–12 months</option>
+          <option>Ongoing / Indefinite</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Budget / Rate Range ($/hr)</label>
+        <input type="text" name="budget_range" placeholder="e.g. $70–$100/hr" />
+      </div>
+      <div class="form-group">
+        <label>Start Date</label>
+        <input type="date" />
+      </div>
+      <div class="form-group full">
+        <label>Role Description *</label>
+        <textarea name="role_description" placeholder="Describe the responsibilities, required skills, and any special requirements for this contract role..."></textarea>
+      </div>
+    </div>
+    <button class="form-submit" aria-label="Submit job posting" onclick="submitForm('Your job posting has been received. We will review and follow up within 1 business day.')">Submit Job Posting</button>
+  </div>
+</section>
+
+
+<!-- REQUIRED DOCUMENTS -->
+<section id="documents" style="background: var(--slate-light);">
+  <div class="section-label">Onboarding Compliance</div>
+  <div class="section-title">Required Contract Documents</div>
+  <div class="section-sub">Every engagement through Innovate IQ LLC requires specific documentation to stay legally compliant. Below is the complete checklist organized by party.</div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+
+    <div>
+      <div class="doc-category">
+        <div class="doc-category-title">📋 Contractor Documents</div>
+        <div class="doc-list">
+          <div class="doc-item">
+            <div class="doc-icon">🪪</div>
+            <div class="doc-info">
+              <div class="doc-name">IRS Form W-9</div>
+              <div class="doc-desc">Taxpayer ID & certification. Required from every 1099 contractor before first payment.</div>
+            </div>
+            <span class="doc-badge badge-required">Required</span>
+            <button class="doc-action" onclick="docAction('W-9')">Get Form</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🪪</div>
+            <div class="doc-info">
+              <div class="doc-name">IRS Form I-9 (Employment Eligibility)</div>
+              <div class="doc-desc">Required by federal law for all W-2 employees — including those hired through a staffing agency. Must be collected within 3 business days of start date. Not required for 1099 or C2C contractors.</div>
+            </div>
+            <span class="doc-badge badge-conditional">W-2 Only</span>
+            <button class="doc-action" onclick="docAction('I-9')">Get Form</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">📝</div>
+            <div class="doc-info">
+              <div class="doc-name">Independent Contractor Agreement (ICA)</div>
+              <div class="doc-desc">Defines scope of work, payment terms, IP ownership, and confidentiality obligations.</div>
+            </div>
+            <span class="doc-badge badge-required">Required</span>
+            <button class="doc-action" onclick="docAction('ICA')">Request</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🪪</div>
+            <div class="doc-info">
+              <div class="doc-name">Government-Issued ID</div>
+              <div class="doc-desc">Copy of valid photo ID for identity verification. Required if client mandates background screening.</div>
+            </div>
+            <span class="doc-badge badge-conditional">If Required</span>
+            <button class="doc-action" onclick="docAction('ID Verification')">Upload</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">📄</div>
+            <div class="doc-info">
+              <div class="doc-name">Resume / CV</div>
+              <div class="doc-desc">Current resume for skill verification and client submission. Operational — not a legal compliance document.</div>
+            </div>
+            <span class="doc-badge badge-recommended">Operational</span>
+            <button class="doc-action" onclick="docAction('Resume')">Upload</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🏢</div>
+            <div class="doc-info">
+              <div class="doc-name">Articles of Organization / EIN Letter</div>
+              <div class="doc-desc">Required for Corp-to-Corp (C2C) arrangements to verify your business entity.</div>
+            </div>
+            <span class="doc-badge badge-conditional">C2C Only</span>
+            <button class="doc-action" onclick="docAction('C2C Docs')">Upload</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🛡️</div>
+            <div class="doc-info">
+              <div class="doc-name">Certificate of Liability Insurance (COI)</div>
+              <div class="doc-desc">General Liability COI required for C2C engagements. E&O (Errors &amp; Omissions) insurance is separate and may be required for senior IT or professional roles by the client.</div>
+            </div>
+            <span class="doc-badge badge-conditional">Sr. / C2C</span>
+            <button class="doc-action" onclick="docAction('Insurance COI')">Upload</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🔒</div>
+            <div class="doc-info">
+              <div class="doc-name">Non-Disclosure Agreement (NDA)</div>
+              <div class="doc-desc">Client-specific NDA may be required depending on project sensitivity.</div>
+            </div>
+            <span class="doc-badge badge-conditional">If Required</span>
+            <button class="doc-action" onclick="docAction('NDA')">Request</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🔎</div>
+            <div class="doc-info">
+              <div class="doc-name">Background Check Authorization</div>
+              <div class="doc-desc">Signed by the contractor authorizing background screening. The client requests it — the contractor signs it. Required before screening can begin.</div>
+            </div>
+            <span class="doc-badge badge-conditional">If Required</span>
+            <button class="doc-action" onclick="docAction('BGC Auth')">Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="doc-category">
+        <div class="doc-category-title">🏢 Client / Prime Vendor Documents</div>
+        <div class="doc-list">
+          <div class="doc-item">
+            <div class="doc-icon">🤝</div>
+            <div class="doc-info">
+              <div class="doc-name">Master Services Agreement (MSA)</div>
+              <div class="doc-desc">Governs the overall B2B relationship between Innovate IQ and the client company.</div>
+            </div>
+            <span class="doc-badge badge-required">Required</span>
+            <button class="doc-action" onclick="docAction('MSA')">Request</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">📋</div>
+            <div class="doc-info">
+              <div class="doc-name">Statement of Work (SOW)</div>
+              <div class="doc-desc">Defines specific engagement scope, deliverables, timeline, and rate per placement.</div>
+            </div>
+            <span class="doc-badge badge-required">Per Role</span>
+            <button class="doc-action" onclick="docAction('SOW')">Request</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🧾</div>
+            <div class="doc-info">
+              <div class="doc-name">IRS Form W-8BEN / W-8BEN-E</div>
+              <div class="doc-desc">Collected from foreign contractors paid by Innovate IQ (W-8BEN for individuals, W-8BEN-E for entities). If a foreign client pays Innovate IQ, they may request this form from us instead.</div>
+            </div>
+            <span class="doc-badge badge-conditional">Foreign Only</span>
+            <button class="doc-action" onclick="docAction('W-8')">Get Form</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">📌</div>
+            <div class="doc-info">
+              <div class="doc-name">Purchase Order (PO)</div>
+              <div class="doc-desc">Client-issued PO number required for invoicing in most enterprise procurement systems.</div>
+            </div>
+            <span class="doc-badge badge-conditional">Enterprise</span>
+            <button class="doc-action" onclick="docAction('PO Request')">Request</button>
+          </div>
+
+          <div class="doc-item">
+            <div class="doc-icon">💲</div>
+            <div class="doc-info">
+              <div class="doc-name">Staffing Rate Card</div>
+              <div class="doc-desc">A formal document showing Innovate IQ's billing rates by seniority tier and role type. Prime vendors and enterprise clients commonly request this before signing an MSA.</div>
+            </div>
+            <span class="doc-badge badge-recommended">Recommended</span>
+            <button class="doc-action" onclick="docAction('Rate Card')">Request</button>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">✅</div>
+            <div class="doc-info">
+              <div class="doc-name">Vendor Registration / Supplier Portal</div>
+              <div class="doc-desc">Many prime vendors require Innovate IQ to register as an approved supplier before engagement.</div>
+            </div>
+            <span class="doc-badge badge-recommended">Recommended</span>
+            <button class="doc-action" onclick="docAction('Vendor Registration')">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 28px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px 24px; display: flex; align-items: flex-start; gap: 14px;">
+    <div style="font-size: 20px; flex-shrink:0;">💡</div>
+    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.8;"><strong style="color:var(--navy)">Note on document requests:</strong> Clicking "Request" or "Upload" above sends a notification to our team. For urgent document needs, use the Vendor Portal below or contact us directly. All documents are stored securely and used only for the specific engagement.</p>
+  </div>
+</section>
+
+<!-- VENDOR PORTAL -->
+<section id="vendor">
+  <div class="section-label">Prime Vendor Communication</div>
+  <div class="section-title">Vendor Portal</div>
+  <div class="section-sub">Communicate with Innovate IQ LLC directly — track engagements, exchange documents, and manage your onboarding checklist in one place.</div>
+
+  <div class="vendor-layout">
+    <div class="vendor-sidebar">
+      <button class="vendor-tab active" onclick="switchVendorTab('vt-messages', this)">
+        <span class="vendor-tab-icon">💬</span> Messages
+      </button>
+      <button class="vendor-tab" onclick="switchVendorTab('vt-engagements', this)">
+        <span class="vendor-tab-icon">📊</span> Engagements
+      </button>
+      <button class="vendor-tab" onclick="switchVendorTab('vt-vault', this)">
+        <span class="vendor-tab-icon">🗂️</span> Document Vault
+      </button>
+      <button class="vendor-tab" onclick="switchVendorTab('vt-checklist', this)">
+        <span class="vendor-tab-icon">✅</span> Onboarding Checklist
+      </button>
+      <button id="tab-new" class="vendor-tab" onclick="switchVendorTab('vt-new', this)">
+        <span class="vendor-tab-icon">➕</span> New Engagement
+      </button>
+      <div style="margin-top: 16px; padding: 14px 16px; background: var(--electric-light); border-radius: var(--radius); border: 1px solid #BDD5FA;">
+        <p style="font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">Your Account Rep</p>
+        <p style="font-size: 13px; color: var(--electric); font-weight: 500;">Innovate IQ Team</p>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">info@innovateiqconsulting.com</p>
+      </div>
+    </div>
+
+    <div style="flex:1; min-width:0;">
+
+      <!-- MESSAGES PANEL -->
+      <div id="vt-messages" class="vendor-panel active">
+        <h3>Messages</h3>
+        <p class="panel-sub">Direct communication channel between you and Innovate IQ LLC.</p>
+        <div class="msg-thread" id="msgThread">
+          <div class="msg-bubble recv">
+            Welcome to the Innovate IQ Vendor Portal. Use this channel to communicate about engagements, document requests, or any questions regarding your placement.
+            <div class="msg-meta">Innovate IQ Team · Today</div>
+          </div>
+          <div class="msg-bubble recv">
+            Please complete your onboarding checklist under the Onboarding tab so we can move forward with your placement.
+            <div class="msg-meta">Innovate IQ Team · Today</div>
+          </div>
+        </div>
+        <div class="msg-compose">
+          <textarea id="msgInput" placeholder="Type your message here — e.g. 'I have a question about the SOW for Project X'..."></textarea>
+          <button class="msg-send" onclick="sendMessage()">Send ↗</button>
+        </div>
+      </div>
+
+      <!-- ENGAGEMENTS PANEL -->
+      <div id="vt-engagements" class="vendor-panel">
+        <h3>Active Engagements</h3>
+        <p class="panel-sub">Track all current, pending, and completed contract placements.</p>
+        <div class="engagement-list">
+          <div class="engagement-item">
+            <div class="eng-status eng-active"></div>
+            <div class="eng-info">
+              <div class="eng-name">TechCorp — Senior DevOps Engineer</div>
+              <div class="eng-detail">Start: Jan 15, 2025 · Rate: Negotiated · C2C · 6-month contract</div>
+            </div>
+            <span class="eng-badge active">Active</span>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-status eng-pending"></div>
+            <div class="eng-info">
+              <div class="eng-name">FinanceGroup LLC — Data Analyst</div>
+              <div class="eng-detail">Pending MSA signature · 1099 · Start TBD</div>
+            </div>
+            <span class="eng-badge pending">Pending</span>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-status eng-closed"></div>
+            <div class="eng-info">
+              <div class="eng-name">HealthTech Inc — Project Manager</div>
+              <div class="eng-detail">Completed: Dec 2024 · W-2 · 3-month engagement</div>
+            </div>
+            <span class="eng-badge closed">Closed</span>
+          </div>
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+          <button class="doc-action" style="font-size:13px; padding: 9px 20px;" onclick="switchVendorTab('vt-new', document.getElementById('tab-new'))">+ Start New Engagement</button>
+        </div>
+      </div>
+
+      <!-- DOCUMENT VAULT -->
+      <div id="vt-vault" class="vendor-panel">
+        <h3>Document Vault</h3>
+        <p class="panel-sub">Securely store and access all signed contracts, forms, and compliance documents.</p>
+        <div class="vault-grid">
+          <div class="vault-item" onclick="vaultAction('Signed ICA — TechCorp')">
+            <div class="vault-icon">📝</div>
+            <div>
+              <div class="vault-name">Signed ICA — TechCorp</div>
+              <div class="vault-meta">PDF · Signed Jan 14, 2025</div>
+            </div>
+          </div>
+          <div class="vault-item" onclick="vaultAction('W-9 on File')">
+            <div class="vault-icon">🧾</div>
+            <div>
+              <div class="vault-name">W-9 on File</div>
+              <div class="vault-meta">PDF · Submitted Jan 10, 2025</div>
+            </div>
+          </div>
+          <div class="vault-item" onclick="vaultAction('MSA — FinanceGroup LLC')">
+            <div class="vault-icon">🤝</div>
+            <div>
+              <div class="vault-name">MSA — FinanceGroup LLC</div>
+              <div class="vault-meta">PDF · Pending signature</div>
+            </div>
+          </div>
+          <div class="vault-item" onclick="vaultAction('Insurance COI')">
+            <div class="vault-icon">🛡️</div>
+            <div>
+              <div class="vault-name">Insurance COI</div>
+              <div class="vault-meta">PDF · Expires Dec 2025</div>
+            </div>
+          </div>
+        </div>
+        <div class="upload-zone" onclick="submitForm('Document upload request received. We will follow up with a secure upload link.')">
+          <div class="upload-icon">📤</div>
+          <p><strong>Upload a document</strong></p>
+          <p>Click to request a secure upload link for new documents</p>
+        </div>
+      </div>
+
+      <!-- ONBOARDING CHECKLIST -->
+      <div id="vt-checklist" class="vendor-panel">
+        <h3>Onboarding Checklist</h3>
+        <p class="panel-sub">Complete all required steps before your first placement can begin.</p>
+        <div class="checklist">
+          <div class="check-item">
+            <input type="checkbox" id="chk1" checked>
+            <label for="chk1">Profile submitted with resume and skills</label>
+            <span class="check-note">✓ Done</span>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="chk2" checked>
+            <label for="chk2">IRS Form W-9 submitted</label>
+            <span class="check-note">✓ Done</span>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="chk3">
+            <label for="chk3">Independent Contractor Agreement (ICA) signed</label>
+            <span class="check-note">Pending</span>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="chk4">
+            <label for="chk4">Government-issued ID uploaded</label>
+            <span class="check-note">Pending</span>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="chk5">
+            <label for="chk5">NDA signed (if applicable to placement)</label>
+            <span class="check-note">If required</span>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="chk6">
+            <label for="chk6">Certificate of Liability Insurance on file (Sr./C2C)</label>
+            <span class="check-note">If applicable</span>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="chk7">
+            <label for="chk7">Banking / payment info provided for invoicing</label>
+            <span class="check-note">Pending</span>
+          </div>
+        </div>
+        <div style="margin-top: 20px;">
+          <button class="form-submit" onclick="submitForm('Checklist status saved. Our team will review and confirm your onboarding progress.')">Save & Notify Team</button>
+        </div>
+      </div>
+
+      <!-- NEW ENGAGEMENT -->
+      <div id="vt-new" class="vendor-panel">
+        <h3>Start a New Engagement</h3>
+        <p class="panel-sub">Submit details about a new contract opportunity or client you want to engage through Innovate IQ.</p>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Your Name / Company *</label>
+            <input type="text" name="vendor_name" placeholder="Your name or LLC name" />
+          </div>
+          <div class="form-group">
+            <label>Client / Prime Vendor Name *</label>
+            <input type="text" name="client_name" placeholder="e.g. Acme Corp, TechStaffing LLC" />
+          </div>
+          <div class="form-group">
+            <label>Client Contact Name</label>
+            <input type="text" name="client_contact" placeholder="Primary contact at the client" />
+          </div>
+          <div class="form-group">
+            <label>Client Contact Email</label>
+            <input type="email" name="client_email" placeholder="contact@client.com" />
+          </div>
+          <div class="form-group">
+            <label>Role / Position *</label>
+            <input type="text" name="role" placeholder="e.g. Senior Java Developer" />
+          </div>
+          <div class="form-group">
+            <label>Engagement Type *</label>
+            <select>
+              <option value="">Select...</option>
+              <option>1099 Independent Contractor</option>
+              <option>Corp-to-Corp (C2C)</option>
+              <option>W-2 via Innovate IQ</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Proposed Start Date</label>
+            <input type="date" />
+          </div>
+          <div class="form-group">
+            <label>Contract Duration</label>
+            <select>
+              <option value="">Select...</option>
+              <option>1–3 months</option>
+              <option>3–6 months</option>
+              <option>6–12 months</option>
+              <option>Ongoing</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Agreed Rate ($/hr)</label>
+            <input type="text" name="rate" placeholder="e.g. 95" />
+          </div>
+          <div class="form-group">
+            <label>Documents Needed</label>
+            <select>
+              <option value="">Select primary doc needed...</option>
+              <option>MSA from Innovate IQ</option>
+              <option>SOW from Innovate IQ</option>
+              <option>ICA for Contractor</option>
+              <option>All of the above</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Notes / Special Requirements</label>
+            <textarea name="engagement_notes" placeholder="Background check required? Specific NDA? Client vendor portal registration? Note anything unusual here..."></textarea>
+          </div>
+        </div>
+        <button class="form-submit" onclick="submitForm('New engagement request submitted! We will prepare the required documents and follow up within 1 business day.')">Submit Engagement Request ↗</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Reach Us</div>
+  <div class="section-title" style="color:#fff">Get in Touch</div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>Have a question about a placement, contract terms, or want to discuss a partnership? Reach out directly.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📧</div>
+        <div class="contact-detail-text">
+          <p>Email</p>
+          <p>info@innovateiqconsulting.com</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div class="contact-detail-text">
+          <p>Phone</p>
+          <p>(555) 000-0000</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🏢</div>
+        <div class="contact-detail-text">
+          <p>Entity Type</p>
+          <p>Limited Liability Company (LLC)</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📅</div>
+        <div class="contact-detail-text">
+          <p>Business Hours</p>
+          <p>Mon – Fri, 9 AM – 6 PM EST</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-card">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="contact_name_msg" placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="contact_email" placeholder="you@email.com" />
+        </div>
+        <div class="form-group full">
+          <label>Subject</label>
+          <input type="text" name="subject" placeholder="What's this about?" />
+        </div>
+        <div class="form-group full">
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell us how we can help..."></textarea>
+        </div>
+      </div>
+      <button class="form-submit" aria-label="Send contact message" onclick="submitForm('Message sent! We\'ll get back to you within 1 business day.')">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <div class="nav-logo-mark">IQ</div>
+        <div>
+          <div class="nav-logo-text" style="font-size:16px;">Innovate IQ LLC</div>
+          <div class="nav-logo-sub">LLC · Contract Staffing &amp; Placement</div>
+        </div>
+      </div>
+      <p>Connecting skilled professionals with meaningful contract placements — legally, transparently, and on your terms.</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="#services">Services</a>
+      <a href="#legal">Compliance</a>
+      <a href="#apply">Apply / Post</a>
+      <a href="#vendor">Vendor Portal</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Innovate IQ LLC. All rights reserved.</p>
+    <p class="footer-disclaimer">For informational purposes only. Nothing on this site constitutes legal, tax, or financial advice. All engagements are subject to a Master Services Agreement. Contractor classification (W-2, 1099, C2C) depends on individual circumstances and applicable law.</p>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+
+function switchVendorTab(panelId, btn) {
+  document.querySelectorAll('.vendor-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.vendor-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+function sendMessage() {
+  const input = document.getElementById('msgInput');
+  const thread = document.getElementById('msgThread');
+  const text = input.value.trim();
+  if (!text) return;
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble sent';
+  const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  bubble.innerHTML = text + '<div class="msg-meta">You · ' + now + '</div>';
+  thread.appendChild(bubble);
+  input.value = '';
+  thread.scrollTop = thread.scrollHeight;
+  setTimeout(() => {
+    const reply = document.createElement('div');
+    reply.className = 'msg-bubble recv';
+    reply.innerHTML = 'Thanks for your message. A member of our team will respond within 1 business day.' + '<div class="msg-meta">Innovate IQ Team · Just now</div>';
+    thread.appendChild(reply);
+    thread.scrollTop = thread.scrollHeight;
+  }, 1000);
+}
+function docAction(docName) {
+  submitForm('Request received for: ' + docName + '. We will follow up within 1 business day.');
+}
+function vaultAction(docName) {
+  submitForm('Access requested for: ' + docName + '. A secure link will be sent to your email.');
+}
+
+function toggleMenu() {
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('open');
+}
+
+function switchTab(panelId, btn) {
+  document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+  btn.classList.add('active');
+}
+
+function submitForm(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = '✓ ' + msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const navHeight = document.querySelector('nav').offsetHeight;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 8;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
