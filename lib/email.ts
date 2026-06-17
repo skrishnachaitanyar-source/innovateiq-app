@@ -1,8 +1,10 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-const FROM = `Innovate IQ LLC <noreply@innovateiqllc.com>`
-const ADMIN_EMAIL = process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'admin@innovateiqllc.com'
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY)
+}
+const FROM = `Innovate IQ LLC <noreply@innovateiqs.com>`
+const ADMIN_EMAIL = process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'info@innovateiqs.com'
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
 function emailHtml(title: string, body: string) {
@@ -27,7 +29,7 @@ const p = (t: string) => `<p style="color:#475569;font-size:15px;line-height:1.7
 const btn = (t: string, url: string) => `<a href="${url}" style="display:inline-block;background:#1B6FE8;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:500;font-size:14px;margin:16px 0">${t}</a>`
 
 export async function sendContactEmail(data: { name: string; email: string; subject?: string; message: string; type: string }) {
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM, to: ADMIN_EMAIL,
     subject: `[${data.type.toUpperCase()}] ${data.subject || 'New Contact Submission'}`,
     html: emailHtml('New Contact Submission',
@@ -37,14 +39,14 @@ export async function sendContactEmail(data: { name: string; email: string; subj
 }
 
 export async function sendWelcomeEmail(data: { name: string; email: string; role: string }) {
-  await resend.emails.send({
+  await getResend().emails.send({
     from: FROM, to: data.email,
     subject: `Welcome to Innovate IQ LLC`,
     html: emailHtml('Welcome aboard!',
       `${p(`Hi ${data.name},`)}${p(`Your ${data.role} account is ready.`)}${btn('Go to Dashboard', `${APP_URL}/dashboard`)}`
     )
   })
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM, to: ADMIN_EMAIL,
     subject: `New ${data.role} registered: ${data.name}`,
     html: emailHtml(`New ${data.role} registered`,
@@ -54,14 +56,14 @@ export async function sendWelcomeEmail(data: { name: string; email: string; role
 }
 
 export async function sendApplicationNotification(data: { contractorName: string; contractorEmail: string; jobTitle: string; clientEmail: string; clientName: string; coverNote?: string }) {
-  await resend.emails.send({
+  await getResend().emails.send({
     from: FROM, to: ADMIN_EMAIL,
     subject: `New application: ${data.jobTitle}`,
     html: emailHtml('New Job Application',
       `${p(`<strong>${data.contractorName}</strong> applied for <strong>${data.jobTitle}</strong>`)}${data.coverNote ? p(`Note: ${data.coverNote}`) : ''}${btn('Review', `${APP_URL}/admin/jobs`)}`
     )
   })
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM, to: data.contractorEmail,
     subject: `Application received: ${data.jobTitle}`,
     html: emailHtml('Application Received',
@@ -71,7 +73,7 @@ export async function sendApplicationNotification(data: { contractorName: string
 }
 
 export async function sendDocumentNotification(data: { uploaderName: string; docType: string; adminEmail?: string }) {
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM, to: data.adminEmail || ADMIN_EMAIL,
     subject: `Document uploaded: ${data.docType.toUpperCase()}`,
     html: emailHtml('New Document Uploaded',
@@ -81,7 +83,7 @@ export async function sendDocumentNotification(data: { uploaderName: string; doc
 }
 
 export async function sendDocumentStatusEmail(data: { recipientName: string; recipientEmail: string; docType: string; status: 'approved' | 'rejected'; reason?: string }) {
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM, to: data.recipientEmail,
     subject: `Document ${data.status}: ${data.docType.toUpperCase()}`,
     html: emailHtml(`Document ${data.status === 'approved' ? 'Approved' : 'Rejected'}`,
@@ -91,7 +93,7 @@ export async function sendDocumentStatusEmail(data: { recipientName: string; rec
 }
 
 export async function sendEsignRequestEmail(data: { signerName: string; signerEmail: string; docType: string; signingUrl: string }) {
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM, to: data.signerEmail,
     subject: `Action required: Sign your ${data.docType.toUpperCase()}`,
     html: emailHtml('Document Ready to Sign',
@@ -107,7 +109,7 @@ export async function sendApplicationStatusEmail(data: { contractorName: string;
     rejected: 'Thank you for your interest. We are moving forward with other candidates.',
     reviewing: 'Your application is currently under review.',
   }
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM, to: data.contractorEmail,
     subject: `Application update: ${data.jobTitle}`,
     html: emailHtml('Application Update',
@@ -117,7 +119,7 @@ export async function sendApplicationStatusEmail(data: { contractorName: string;
 }
 
 export async function sendEngagementStartEmail(data: { contractorName: string; contractorEmail: string; clientName: string; role: string; startDate: string; rate: string; engagementType: string }) {
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM, to: data.contractorEmail,
     subject: `Engagement confirmed: ${data.role}`,
     html: emailHtml('Engagement Confirmed',
