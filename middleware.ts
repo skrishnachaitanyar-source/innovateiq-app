@@ -2,34 +2,36 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  // Pass through if Supabase isn't configured yet
+  if (!supabaseUrl || !supabaseKey) {
+    return NextResponse.next()
+  }
+
   let supabaseResponse = NextResponse.next({ request })
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() { return request.cookies.getAll() },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-          supabaseResponse = NextResponse.next({ request })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
-        },
+  const supabase = createServerClient(supabaseUrl, supabaseKey, {
+    cookies: {
+      getAll() { return request.cookies.getAll() },
+      setAll(cookiesToSet) {
+        cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
+        supabaseResponse = NextResponse.next({ request })
+        cookiesToSet.forEach(({ name, value, options }) =>
+          supabaseResponse.cookies.set(name, value, options)
+        )
       },
-    }
-  )
+    },
+  })
 
   const { data: { user } } = await supabase.auth.getUser()
 
   const { pathname } = request.nextUrl
 
-  // Protected routes
   const protectedRoutes = ['/dashboard', '/contractor', '/client', '/admin']
   const isProtected = protectedRoutes.some(r => pathname.startsWith(r))
 
-  // Auth routes (redirect if already logged in)
   const authRoutes = ['/auth/login', '/auth/register']
   const isAuthRoute = authRoutes.some(r => pathname.startsWith(r))
 
@@ -41,7 +43,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
-  // Admin only
   if (pathname.startsWith('/admin') && user) {
     const { data: profile } = await supabase
       .from('profiles')
@@ -58,5 +59,13 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'],
+  // Only run on app routes, not the marketing site or static assets
+  matcher: [
+    '/dashboard/:path*',
+    '/contractor/:path*',
+    '/client/:path*',
+    '/admin/:path*',
+    '/auth/:path*',
+    '/api/:path*',
+  ],
 }
